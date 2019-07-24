@@ -6,12 +6,12 @@
 
     <parent>
         <groupId>org.lkop</groupId>
-        <artifactId>project2ndchance</artifactId>
+        <artifactId>project2ndchanceat-Testsuite</artifactId>
         <version>1</version>
     </parent>
 
-    <artifactId>project2ndchance</artifactId>
-    <name>project2ndchance: A new project</name>
+    <artifactId>project2ndchanceat-configuration</artifactId>
+    <name>project2ndchanceat: A new project</name>
         
     <build>
 
@@ -40,8 +40,8 @@
 		        <configuration>         
 		            <!-- Tests to execute. -->
 		            <includes>
-		                <include>org/jboss/threads/**/*TestCase.java</include>
-                                <include>org/jboss/threads/**/*Test.java</include>
+		                <include>org/lkop/project2ndchance/**/*TestCase.java</include>
+                                <include>org/lkop/project2ndchance/**/*Test.java</include>
 		            </includes> 
 		        </configuration>
 		    </execution>
