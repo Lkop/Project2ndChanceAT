@@ -6,16 +6,16 @@
 
     <parent>
         <groupId>org.lkop</groupId>
-        <artifactId>project2ndchance</artifactId>
+        <artifactId>project2ndchanceat</artifactId>
         <version>1</version>
     </parent>
 
-    <groupId>org.jboss</groupId>
-    <artifactId>project2ndchance</artifactId>
+    <groupId>org.lkop</groupId>
+    <artifactId>project2ndchanceat-modules</artifactId>
     <packaging>pom</packaging>
     <version>1</version>
 
-    <name>project2ndchance: A new project</name>
+    <name>project2ndchanceat: A new project</name>
     
     <properties>
         <version.junit>4.11</version.junit>
