@@ -6,13 +6,13 @@
 	
     <parent>
         <groupId>org.lkop</groupId>
-        <artifactId>project2ndchance</artifactId>
+        <artifactId>project2ndchanceat-master</artifactId>
         <version>1</version>
     </parent>
 
-    <artifactId>project2ndchance</artifactId>
+    <artifactId>project2ndchanceat-Testsuite</artifactId>
     <packaging>pom</packaging>
-    <name>project2ndchance: A new project</name>
+    <name>project2ndchanceat: A new project</name>
 
             
     <modules>
