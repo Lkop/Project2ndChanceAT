@@ -4,7 +4,9 @@ import org.lkop.project2ndchance.StringCheck;
 import org.lkop.project2ndchance.ProposalData;
 import org.junit.Test;
 
+import org.jboss.eap.additional.testsuite.annotations.EapAdditionalTestsuite;
 
+@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java"})
 public class MainTest {
     
     @Test
