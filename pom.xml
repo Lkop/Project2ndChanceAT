@@ -104,16 +104,14 @@
 						<id>clear previous sources</id>
 						<phase>process-test-resources</phase>
 						<goals>
-							<goal>run</goal>
+						    <goal>run</goal>
 						</goals>
 						<configuration>
-							<target name="clean" description="clean">
-					<delete includeEmptyDirs="true" failonerror="false">
-						<fileset dir="${basedir}/modules/testcases" includes="**/${serverDir}/**/src/main/java/"/>
-					</delete>
-					</target>
+                                                    <tasks>
+							<delete dir="${basedir}/modules/testcases/jdkAll/${serverDir}/Testsuite/src/main/java/"/>
+						    </tasks>
 						</configuration>
-					</execution>
+					    </execution>
 				</executions>
 			</plugin>
 
