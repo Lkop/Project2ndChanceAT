@@ -14,7 +14,7 @@ import org.lkop.project2ndchance.AwardData;
 import org.lkop.project2ndchance.SomethingWrong;
 import org.junit.Test;
 
-@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java"})
+@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#1.1.0"})
 public class MainTest {
     
     @Test
@@ -69,7 +69,7 @@ public class MainTest {
         String pr_dir = "proposals";
         
         System.out.println("Files in this folder:");
-        File currentFolder = new File(pr_dir);
+        File currentFolder = new File(System.getProperty("APP_DIR",".") + "/" + pr_dir);
         String[] all_files = currentFolder.list();
         
         List<ProposalData> prlist_data = new ArrayList<>();
