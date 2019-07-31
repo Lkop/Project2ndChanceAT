@@ -12,7 +12,10 @@ public class MainTest {
     @Test
     public void run(){
 
-        StringCheck sc = new StringCheck("proposal-12345.txt");
+        //proposals section
+        String pr_dir = "proposals";
+
+        StringCheck sc = new StringCheck(System.getProperty("APP_DIR",".") + "/" + pr_dir + "/" + "proposal-12345.txt");
 
         ProposalData p_data = new ProposalData();
 
