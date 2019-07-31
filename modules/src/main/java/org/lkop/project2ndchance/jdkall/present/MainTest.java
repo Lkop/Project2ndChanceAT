@@ -14,7 +14,7 @@ import org.lkop.project2ndchance.AwardData;
 import org.lkop.project2ndchance.SomethingWrong;
 import org.junit.Test;
 
-@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#1.1.0"})
+@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#2.0.0"})
 public class MainTest {
     
     @Test
