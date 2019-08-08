@@ -133,7 +133,7 @@
 				       <argument>${basedir}</argument>
 				       <argument>${basedir}/modules/src/main/java</argument>
 				       <argument>${serverDir}</argument>
-				       <argument>${APP_VERSION}</argument>
+				       <argument>${JBOSS_VERSION}</argument>
 				       <argument>versionOrder</argument>
 		                       <argument>${DISABLE_TESTS}</argument>
 		                       <argument>${FEATURE_LIST}</argument>

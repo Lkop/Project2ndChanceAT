@@ -1,4 +1,4 @@
-package org.lkop.project2ndchance.jdkall.present.Test;
+package org.lkop.project2ndchance.jdkall.past.Test;
 import org.jboss.eap.additional.testsuite.annotations.EapAdditionalTestsuite;
 
 import java.io.BufferedReader;
@@ -7,16 +7,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import org.lkop.project2ndchance.StringCheck;
 import org.lkop.project2ndchance.FileCheck;
 import org.lkop.project2ndchance.ProposalData;
 import org.lkop.project2ndchance.AwardData;
 import org.lkop.project2ndchance.SomethingWrong;
-import org.lkop.project2ndchance.MappingData;
 import org.junit.Test;
 
-@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#2.0.0"})
+@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#2.0.0*2.0.0"})
 public class MainTest {
     
     @Test
@@ -71,7 +69,7 @@ public class MainTest {
         String pr_dir = "proposals";
         
         System.out.println("Files in this folder:");
-        File currentFolder = new File(pr_dir);
+        File currentFolder = new File(System.getProperty("APP_DIR",".") + "/" + pr_dir);
         String[] all_files = currentFolder.list();
         
         List<ProposalData> prlist_data = new ArrayList<>();
@@ -130,8 +128,6 @@ public class MainTest {
                         
                         pr_data.setSemester(semester);
                     }
-                    
-                    pr_data.setPhasePass(sc.getPhasePass(line));
                 }
             }
             prlist_data.add(pr_data);
@@ -144,47 +140,9 @@ public class MainTest {
             System.out.println("Lastname: " + prprint_data.getLastname());
             System.out.println("Email: " + prprint_data.getEmail());
             System.out.println("Semester: " + prprint_data.getSemester());
-            System.out.println("Phase pass: " + prprint_data.getPhasePass());
             System.out.println("Mentor's Name: " + prprint_data.getMName());
             System.out.println("Mentor's Lastname: " + prprint_data.getMLastname());
-            System.out.println("Mentor's Email: " + prprint_data.getMEmail());
-            System.out.println();
-        }
-        
-        //MAPPING
-        List<MappingData> mplist_data = new ArrayList<>();
-        Random random = new Random();
-
-        for(i=0; i<awlist_data.size()/2; i++){
-            
-            if(!prlist_data.isEmpty()){
-                int rand = random.nextInt(prlist_data.size());
-                MappingData mp_data = new MappingData(awlist_data.get(i), awlist_data.get(i+awlist_data.size()/2), prlist_data.get(rand));
-                mplist_data.add(mp_data);
-                prlist_data.remove(rand);
-            }   
-        }
-        
-        for(MappingData mpprint_data : mplist_data){
-        
-            System.out.println("ID: " + mpprint_data.getProposal().getId());
-            System.out.println("Name: " + mpprint_data.getProposal().getName());
-            System.out.println("Lastname: " + mpprint_data.getProposal().getLastname());
-            System.out.println("Email: " + mpprint_data.getProposal().getEmail());
-            System.out.println("Semester: " + mpprint_data.getProposal().getSemester());
-            System.out.println("Mentor's Name: " + mpprint_data.getProposal().getMName());
-            System.out.println("Mentor's Lastname: " + mpprint_data.getProposal().getMLastname());
-            System.out.println("Mentor's Email: " + mpprint_data.getProposal().getMEmail());
-            System.out.println();
-            
-            System.out.println("Developer's Award");
-            System.out.println("ID: " + mpprint_data.getDevAward().getId());
-            System.out.println("Prize: " + mpprint_data.getDevAward().getPrize());            
-            System.out.println();
-            
-            System.out.println("Mentor's Award");
-            System.out.println("ID: " + mpprint_data.getMenAward().getId());
-            System.out.println("Prize: " + mpprint_data.getMenAward().getPrize());
+            System.out.println("Mentor's Email: " + prprint_data.getMEmail()); 
         }
     }
 }
