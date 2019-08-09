@@ -1,4 +1,4 @@
-package org.lkop.project2ndchance.jdkall.present.Test;
+package org.lkop.project2ndchance.jdkall.past.Test;
 
 import org.lkop.project2ndchance.StringCheck;
 import org.lkop.project2ndchance.ProposalData;
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import org.jboss.eap.additional.testsuite.annotations.EapAdditionalTestsuite;
 
-@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#1.0.0**1.0.0"})
+@EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#1.0.0*1.0.0"})
 public class MainTest {
 
     @Test
