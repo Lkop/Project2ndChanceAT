@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -89,6 +91,7 @@ public class MainTest {
             ProposalData pr_data = new ProposalData();
             
             boolean student = true;
+            boolean info = false;
             
             for(String line : lines){
                 
@@ -131,9 +134,39 @@ public class MainTest {
                         pr_data.setSemester(semester);
                     }
                     
-                    pr_data.setPhasePass(sc.getPhasePass(line));
+                    if(line.equals("<--Information-->")){
+                        info = true;
+                    }
+                    
+                    if(info){
+                        
+                        boolean phase_p = sc.getPhasePass(line);
+                        if(phase_p){
+                            pr_data.setPhasePass(phase_p);
+                        }
+                        
+                        boolean final_p = sc.getFinalPass(line);
+                        if(final_p){
+                            pr_data.setFinalPass(final_p);
+                        }
+                        
+                        LocalDate start_date = sc.getStartDate(line);
+                        if(start_date != null){
+                            pr_data.setStartDate(start_date);
+                        }
+                        
+                        LocalDate end_date = sc.getEndDate(line);
+                        if(end_date != null){
+                            pr_data.setEndDate(end_date);
+                        }
+                    }   
                 }
             }
+            
+            if(pr_data.getStartDate() == null || pr_data.getEndDate() == null){
+                throw new SomethingWrong("Invalid Date");
+            }
+            
             prlist_data.add(pr_data);
         }
         
@@ -144,10 +177,13 @@ public class MainTest {
             System.out.println("Lastname: " + prprint_data.getLastname());
             System.out.println("Email: " + prprint_data.getEmail());
             System.out.println("Semester: " + prprint_data.getSemester());
-            System.out.println("Phase pass: " + prprint_data.getPhasePass());
             System.out.println("Mentor's Name: " + prprint_data.getMName());
             System.out.println("Mentor's Lastname: " + prprint_data.getMLastname());
             System.out.println("Mentor's Email: " + prprint_data.getMEmail());
+            System.out.println("Phase pass: " + prprint_data.getPhasePass());
+            System.out.println("Final pass: " + prprint_data.getFinalPass());
+            System.out.println("Start date: " + prprint_data.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+            System.out.println("End date: " + prprint_data.getEndDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             System.out.println();
         }
         
@@ -159,9 +195,14 @@ public class MainTest {
             
             if(!prlist_data.isEmpty()){
                 int rand = random.nextInt(prlist_data.size());
-                MappingData mp_data = new MappingData(awlist_data.get(i), awlist_data.get(i+awlist_data.size()/2), prlist_data.get(rand));
-                mplist_data.add(mp_data);
-                prlist_data.remove(rand);
+                
+                if(prlist_data.get(rand).getPhasePass()){
+                    MappingData mp_data = new MappingData(awlist_data.get(i), awlist_data.get(i+awlist_data.size()/2), prlist_data.get(rand));
+                    mplist_data.add(mp_data);
+                    prlist_data.remove(rand);
+                }else{
+                    prlist_data.remove(rand);
+                }
             }   
         }
         
