@@ -16,6 +16,7 @@ import org.lkop.project2ndchance.ProposalData;
 import org.lkop.project2ndchance.AwardData;
 import org.lkop.project2ndchance.SomethingWrong;
 import org.lkop.project2ndchance.MappingData;
+
 import org.junit.Test;
 
 @EapAdditionalTestsuite({"modules/testcases/jdkAll/master/Testsuite/src/main/java#2.1.1"})
@@ -164,7 +165,8 @@ public class MainTest {
             }
             
             if(pr_data.getStartDate() == null || pr_data.getEndDate() == null){
-                throw new SomethingWrong("Invalid Date");
+                //throw new SomethingWrong("Invalid Date");
+                System.out.println("Invalid Date");
             }
             
             prlist_data.add(pr_data);
@@ -182,8 +184,12 @@ public class MainTest {
             System.out.println("Mentor's Email: " + prprint_data.getMEmail());
             System.out.println("Phase pass: " + prprint_data.getPhasePass());
             System.out.println("Final pass: " + prprint_data.getFinalPass());
-            System.out.println("Start date: " + prprint_data.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-            System.out.println("End date: " + prprint_data.getEndDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+            
+            if(prprint_data.getStartDate() != null || prprint_data.getEndDate() != null){
+                System.out.println("Start date: " + prprint_data.getStartDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+                System.out.println("End date: " + prprint_data.getEndDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+            }
+            
             System.out.println();
         }
         
