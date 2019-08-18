@@ -63,17 +63,21 @@ public class MainTest {
                 i++;
             }
         }
-            
+        
+        System.out.println();
+        System.out.println("----- AWARDS ------");
+        System.out.println();
+        
         for(AwardData awprint_data : awlist_data){
         
-            System.out.println(awprint_data.getId());
-            System.out.println(awprint_data.getPrize());
+            System.out.println("Award ID: " + awprint_data.getId());
+            System.out.println("Prize: " + awprint_data.getPrize());
+            System.out.println();
         }
 
         //proposals section
         String pr_dir = "proposals";
         
-        System.out.println("Files in this folder:");
         File currentFolder = new File(System.getProperty("APP_DIR",".") + "/" + pr_dir);
         String[] all_files = currentFolder.list();
         
@@ -135,6 +139,18 @@ public class MainTest {
                         pr_data.setSemester(semester);
                     }
                     
+                    String pr_title = sc.getPrTitle(line);
+                    if(pr_title != null){
+                        
+                        pr_data.setPrTitle(pr_title);
+                    }
+                    
+                    String pr_url = sc.getPrUrl(line);
+                    if(pr_url != null){
+                        
+                        pr_data.setPrUrl(pr_url);
+                    }
+                    
                     if(line.equals("<--Information-->")){
                         info = true;
                     }
@@ -166,11 +182,15 @@ public class MainTest {
             
             if(pr_data.getStartDate() == null || pr_data.getEndDate() == null){
                 //throw new SomethingWrong("Invalid Date");
-                System.out.println("Invalid Date");
+                System.out.println("Invalid Date --> " + filename);
             }
             
             prlist_data.add(pr_data);
         }
+        
+        System.out.println();
+        System.out.println("----- PROPOSALS ------");
+        System.out.println();
         
         for(ProposalData prprint_data : prlist_data){
         
@@ -179,6 +199,8 @@ public class MainTest {
             System.out.println("Lastname: " + prprint_data.getLastname());
             System.out.println("Email: " + prprint_data.getEmail());
             System.out.println("Semester: " + prprint_data.getSemester());
+            System.out.println("Proposal Title: " + prprint_data.getPrTitle());
+            System.out.println("Proposal Url: " + prprint_data.getPrUrl());
             System.out.println("Mentor's Name: " + prprint_data.getMName());
             System.out.println("Mentor's Lastname: " + prprint_data.getMLastname());
             System.out.println("Mentor's Email: " + prprint_data.getMEmail());
@@ -212,6 +234,9 @@ public class MainTest {
             }   
         }
         
+        System.out.println("----- MAPPING DATA ------");
+        System.out.println();
+        
         for(MappingData mpprint_data : mplist_data){
         
             System.out.println("ID: " + mpprint_data.getProposal().getId());
@@ -219,6 +244,8 @@ public class MainTest {
             System.out.println("Lastname: " + mpprint_data.getProposal().getLastname());
             System.out.println("Email: " + mpprint_data.getProposal().getEmail());
             System.out.println("Semester: " + mpprint_data.getProposal().getSemester());
+            System.out.println("Proposal Title: " + mpprint_data.getProposal().getPrTitle());
+            System.out.println("Proposal Url: " + mpprint_data.getProposal().getPrUrl());
             System.out.println("Mentor's Name: " + mpprint_data.getProposal().getMName());
             System.out.println("Mentor's Lastname: " + mpprint_data.getProposal().getMLastname());
             System.out.println("Mentor's Email: " + mpprint_data.getProposal().getMEmail());
@@ -232,6 +259,7 @@ public class MainTest {
             System.out.println("Mentor's Award");
             System.out.println("ID: " + mpprint_data.getMenAward().getId());
             System.out.println("Prize: " + mpprint_data.getMenAward().getPrize());
+            System.out.println();
         }
     }
 }
